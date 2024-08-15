@@ -20,8 +20,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if(roleRepository.count()==0){
-            roleRepository.save(new Role(null,"ROLE_USER",new HashSet<>()));
-            roleRepository.save(new Role(null,"ROLE_ADMIN",new HashSet<>()));
+            roleRepository.save(new Role(null,"USER",new HashSet<>()));
+            roleRepository.save(new Role(null,"ADMIN",new HashSet<>()));
         }
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -32,20 +33,25 @@ public class UserService {
         }
         User user = userMapper.toEntity(userDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        userDTO.getRoles().forEach(roleName -> {
-                    Role role = roleRepository.findByName(String.valueOf(roleName));
-                    if(role!=null){
-                        roles.add(role);
-                    }else {
-                        System.out.println("Role not found: " + roleName); // Debugging statement
-                    }
-                });
-        user.setRoles(roles);
+        // Map RoleDTOs to Roles using MapStruct
+        Set<Role> roles = userMapper.mapRoles(userDTO.getRoles());
 
+        // Validate and add roles if they exist in the repository
+        Set<Role> validRoles = new LinkedHashSet<>();
+        for(Role role : roles){
+            Role foundRole = roleRepository.findByName(role.getName());
+            if(foundRole!=null){
+                validRoles.add(role);
+            }else {
+                System.out.println("role not found " + role.getName());
+            }
+        }
+        // Set validated roles on the User entity
+        user.setRoles(validRoles);
+
+        // Save the User entity to the repository
         User savedUser = userRepository.save(user);
-        UserDTO registerUser =  userMapper.toDTO(savedUser);
-        return registerUser;
+        return userMapper.toDTO(savedUser);
     }
     public Optional<UserDTO> getUserById(Long userId){
         return userRepository.findById(userId).map(userMapper::toDTO);

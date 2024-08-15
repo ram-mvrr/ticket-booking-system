@@ -15,6 +15,8 @@ import java.util.Set;
 @Table(name="roles")
 public class Role {
     public Role(Long roleId, String name) {
+        this.roleId=roleId;
+        this.name=name;
     }
 
     @Id

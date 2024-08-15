@@ -3,7 +3,6 @@ package com.example.ticketbooking.user;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -23,7 +22,7 @@ public interface UserMapper {
             return null;
         }
         return roleDTOs.stream()
-                .map(roleDTO -> new Role(roleDTO.getRoleId(),roleDTO.getName()))
+                .map(roleDTO -> new Role(roleDTO.getRoleId(), roleDTO.getName()))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
     @Named("mapRoleToDTOsRoles")
