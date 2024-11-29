@@ -1,0 +1,90 @@
+package com.example.ticketbooking.user.service;
+
+
+import com.example.ticketbooking.user.advisor.UserNotFoundException;
+import com.example.ticketbooking.user.dto.CreateUserDTO;
+import com.example.ticketbooking.user.dto.UpdateUserDTO;
+import com.example.ticketbooking.user.dto.UserDTO;
+import com.example.ticketbooking.user.entity.Role;
+import com.example.ticketbooking.user.entity.User;
+import com.example.ticketbooking.user.mapper.UserMapper;
+
+import com.example.ticketbooking.user.repository.UserRepository;
+import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.LinkedHashSet;
+import java.util.Optional;
+import java.util.Set;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public UserDTO registerUser(CreateUserDTO createUserDTO){
+        if (createUserDTO.getPassword() == null || createUserDTO.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
+        User user = userMapper.toUserEntity(createUserDTO);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Validate and add roles if they exist in the repository
+        Set<Role> defaultRole = new LinkedHashSet<>();
+        defaultRole.add(new Role("USER_ROLE"));
+        // Set validated roles on the User entity
+        user.setRoles(defaultRole);
+
+        // Save the User entity to the repository
+        User savedUser = userRepository.save(user);
+        return userMapper.toUserDTO(savedUser);
+    }
+
+    @Override
+    public Optional<UserDTO> getUserById(Long userId){
+        return userRepository.findById(userId).map(userMapper::toUserDTO);
+    }
+
+    @Override
+    public Optional<UserDTO> getUserByUsername(String username){
+        return Optional.ofNullable(userRepository.findByUsername(username)).map(userMapper::toUserDTO);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        Set<Role> roles = user.getRoles();
+        // Delete the user
+        userRepository.deleteById(userId);
+    }
+
+    @Override
+    public UserDTO updateUser(Long userId, UpdateUserDTO updateUserDTO) throws UserNotFoundException {
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(()-> new UserNotFoundException("user not found with id "+userId));
+
+        Optional.ofNullable(updateUserDTO.getEmail()).ifPresent(existingUser::setEmail);
+        Optional.ofNullable(updateUserDTO.getFirstName()).ifPresent(existingUser::setFirstName);
+        Optional.ofNullable(updateUserDTO.getLastName()).ifPresent(existingUser::setLastName);
+        Optional.ofNullable(updateUserDTO.getUsername()).ifPresent(existingUser::setUsername);
+        Optional.ofNullable(updateUserDTO.getPhoneNumber()).ifPresent(existingUser::setPhoneNumber);
+
+        User updateUser = userRepository.save(existingUser);
+        return userMapper.toUserDTO(updateUser);
+    }
+}
