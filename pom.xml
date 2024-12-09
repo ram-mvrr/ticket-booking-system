@@ -18,6 +18,7 @@
 
 	<modules>
 		<module>user</module>
+		<module>bus</module>
 		<!--        <module>member-management-service</module>-->
 		<!--        <module>document-management-service</module>-->
 		<!--        <module>notifications-service</module>-->

@@ -13,7 +13,7 @@ public interface BusService {
 
     BusDTO createBus(CreateBusDTO createBusDTO);
 
-    Optional getBus(Long busId);
+    Optional<BusDTO> getBus(Long busId);
 
     List<BusDTO> getAllBuses();
 

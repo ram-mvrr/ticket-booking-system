@@ -7,7 +7,7 @@ import com.example.ticketbooking.bus.entity.Bus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface BusMapper {
 
     @Mapping(source = "busId", target = "busId")

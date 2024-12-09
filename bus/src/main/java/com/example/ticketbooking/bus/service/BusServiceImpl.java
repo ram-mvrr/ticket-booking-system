@@ -61,6 +61,6 @@ public class BusServiceImpl implements BusService {
 
     @Override
     public void deleteBus(Long busId) {
-
+        busRepository.deleteById(busId);
     }
 }
