@@ -1,4 +1,4 @@
-package com.example.ticketbooking.user.advisor;
+package com.example.ticketbooking.user.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

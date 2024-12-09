@@ -11,13 +11,13 @@ import java.util.Optional;
 public interface UserService {
 
 
-    public UserDTO registerUser(CreateUserDTO createUserDTO);
+    UserDTO registerUser(CreateUserDTO createUserDTO);
 
-    public Optional<UserDTO> getUserById(Long userId);
+    Optional<UserDTO> getUserById(Long userId);
 
-    public Optional<UserDTO> getUserByUsername(String username);
+    Optional<UserDTO> getUserByUsername(String username);
 
-    public void deleteUser(Long userId);
+    void deleteUser(Long userId);
 
-    public UserDTO updateUser(Long userId, UpdateUserDTO updateUserDTO);
+    UserDTO updateUser(Long userId, UpdateUserDTO updateUserDTO);
 }
