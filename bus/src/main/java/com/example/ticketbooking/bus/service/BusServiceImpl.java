@@ -1,6 +1,6 @@
 package com.example.ticketbooking.bus.service;
 
-import com.example.ticketbooking.bus.advice.BusNotFoundException;
+import com.example.ticketbooking.bus.exception.BusNotFoundException;
 import com.example.ticketbooking.bus.dto.BusDTO;
 import com.example.ticketbooking.bus.dto.CreateBusDTO;
 import com.example.ticketbooking.bus.dto.UpdateBusDTO;
