@@ -1,6 +1,6 @@
-package com.example.ticketbooking.bus.entity;
+package com.example.ticketbooking.seat.entity;
 
-import com.example.ticketbooking.bus.enums.BusType;
+import com.example.ticketbooking.seat.enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,22 +13,28 @@ import java.math.BigDecimal;
 @Table(name = "bus_table")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Bus {
+public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long busId;
 
     @Column(nullable = false, unique = true)
-    private String busNumber;
+    private Integer seatNumber;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private BusType busType;
+    private SeatType seatType;
 
     @Column(nullable = false)
-    private Integer totalSeats;
+    private Integer availableSeats;
+
+    @Column(nullable = false)
+    private BigDecimal farePerSeat;
 
     @Column(nullable = false)
     private Long routeId;
+
+    @Column(nullable = false)
+    private Long bookingId;
 }

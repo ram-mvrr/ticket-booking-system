@@ -9,6 +9,8 @@ import com.example.ticketbooking.booking.mapper.BookingMapper;
 import com.example.ticketbooking.booking.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,16 +20,23 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final BookingMapper bookingMapper;
+    private final WebClient webClient;
 
     @Autowired
-    public BookingServiceImpl(BookingRepository bookingRepository, BookingMapper bookingMapper) {
+    public BookingServiceImpl(BookingRepository bookingRepository, BookingMapper bookingMapper, WebClient webClient) {
         this.bookingRepository = bookingRepository;
         this.bookingMapper = bookingMapper;
+        this.webClient = webClient;
     }
 
 
     @Override
-    public BookingDTO createBooking(CreateBookingDTO createBookingDTO) {
+    public Mono<BookingDTO> createBooking(CreateBookingDTO createBookingDTO) {
+
+        // Fetch User and Bus details.
+        Mono<UserDTO>
+
+
         Booking booking = bookingMapper.toBookingEntity(createBookingDTO);
 
         Booking savedBooking = bookingRepository.save(booking);

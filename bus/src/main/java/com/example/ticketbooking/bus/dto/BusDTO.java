@@ -20,9 +20,5 @@ public class BusDTO {
 
     private Integer totalSeats;
 
-    private Integer availableSeats;
-
-    private BigDecimal farePerSeat;
-
     private Long routeId;
 }
