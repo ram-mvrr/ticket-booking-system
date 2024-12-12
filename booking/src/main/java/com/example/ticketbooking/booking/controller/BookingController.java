@@ -1,0 +1,55 @@
+package com.example.ticketbooking.booking.controller;
+
+import com.example.ticketbooking.booking.dto.BookingDTO;
+import com.example.ticketbooking.booking.dto.CreateBookingDTO;
+import com.example.ticketbooking.booking.dto.UpdateBookingDTO;
+import com.example.ticketbooking.booking.exception.BookingNotFoundException;
+import com.example.ticketbooking.booking.service.BookingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/booking")
+public class BookingController {
+
+
+    private final BookingService bookingService;
+
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
+
+    @PostMapping("/createBooking")
+    public ResponseEntity<BookingDTO> createBooking(@RequestBody CreateBookingDTO createBookingDTO) {
+        BookingDTO createdBooking = bookingService.createBooking(createBookingDTO);
+        return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getBooking/{bookingId}")
+    public ResponseEntity<BookingDTO> getBooking(@PathVariable Long bookingId) {
+        BookingDTO bookingDTO = bookingService.getBooking(bookingId).orElseThrow(() ->
+                new BookingNotFoundException("Booking not found with ID " + bookingId));
+        return new ResponseEntity<>(bookingDTO, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<BookingDTO> updateBooking(Long bookingId, @RequestBody UpdateBookingDTO updateBookingDTO) {
+        BookingDTO bookingDTO = bookingService.updateBooking(bookingId, updateBookingDTO);
+        return new ResponseEntity<>(bookingDTO, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteBooking/{bookingId}")
+    public ResponseEntity<BookingDTO> deleteBooking(@PathVariable Long bookingId) {
+        bookingService.deleteBooking(bookingId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/getAllBookinges")
+    public ResponseEntity<List<BookingDTO>> getAllBooking() {
+        List<BookingDTO> bookingDTOS = bookingService.getAllBookinges();
+        return new ResponseEntity<>(bookingDTOS, HttpStatus.OK);
+    }
+}

@@ -14,15 +14,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>ticketbooking</name>
-	<description>bus ticket booking application</description>
+	<description>booking ticket booking application</description>
 
 	<modules>
 		<module>user</module>
+		<module>booking</module>
 		<module>bus</module>
-		<!--        <module>member-management-service</module>-->
-		<!--        <module>document-management-service</module>-->
-		<!--        <module>notifications-service</module>-->
-		<!-- Add other microservices as needed -->
+		<module>seat</module>
+		<module>route</module>
 	</modules>
 
 	<properties>

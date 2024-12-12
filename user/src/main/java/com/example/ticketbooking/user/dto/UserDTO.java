@@ -1,5 +1,6 @@
 package com.example.ticketbooking.user.dto;
 
+import com.example.ticketbooking.user.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,4 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Set<RoleDTO> roles = new LinkedHashSet<>();
 }

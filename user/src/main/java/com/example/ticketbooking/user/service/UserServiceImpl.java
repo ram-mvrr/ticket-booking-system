@@ -1,11 +1,11 @@
 package com.example.ticketbooking.user.service;
 
 
+import com.example.ticketbooking.user.enums.Role;
 import com.example.ticketbooking.user.exception.UserNotFoundException;
 import com.example.ticketbooking.user.dto.CreateUserDTO;
 import com.example.ticketbooking.user.dto.UpdateUserDTO;
 import com.example.ticketbooking.user.dto.UserDTO;
-import com.example.ticketbooking.user.entity.Role;
 import com.example.ticketbooking.user.entity.User;
 import com.example.ticketbooking.user.mapper.UserMapper;
 
@@ -42,11 +42,8 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toUserEntity(createUserDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Validate and add roles if they exist in the repository
-        Set<Role> defaultRole = new LinkedHashSet<>();
-        defaultRole.add(new Role("USER_ROLE"));
         // Set validated roles on the User entity
-        user.setRoles(defaultRole);
+        user.setRole(Role.USER);
 
         // Save the User entity to the repository
         User savedUser = userRepository.save(user);
@@ -68,7 +65,6 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long userId){
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        Set<Role> roles = user.getRoles();
         // Delete the user
         userRepository.deleteById(userId);
     }

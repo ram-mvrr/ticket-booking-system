@@ -1,16 +1,16 @@
-package com.example.ticketbooking.bus.dto;
+package com.example.ticketbooking.booking.dto;
 
-import com.example.ticketbooking.bus.enums.BusType;
+import com.example.ticketbooking.booking.enums.BusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class BusDTO {
+public class UpdateBusDTO {
 
     private Long busId;
 
