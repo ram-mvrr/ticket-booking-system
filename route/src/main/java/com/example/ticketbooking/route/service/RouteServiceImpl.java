@@ -1,9 +1,7 @@
 package com.example.ticketbooking.route.service;
 
 import com.example.ticketbooking.route.exception.RouteNotFoundException;
-import com.example.ticketbooking.route.dto.RouteDTO;
-import com.example.ticketbooking.route.dto.CreateRouteDTO;
-import com.example.ticketbooking.route.dto.UpdateRouteDTO;
+import com.example.ticketbooking.shared.route.*;
 import com.example.ticketbooking.route.entity.Route;
 import com.example.ticketbooking.route.mapper.RouteMapper;
 import com.example.ticketbooking.route.repository.RouteRepository;

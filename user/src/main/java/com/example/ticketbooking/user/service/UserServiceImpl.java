@@ -1,37 +1,30 @@
 package com.example.ticketbooking.user.service;
 
-
-import com.example.ticketbooking.user.enums.Role;
+import com.example.ticketbooking.shared.enums.Role;
+import com.example.ticketbooking.shared.user.CreateUserDTO;
+import com.example.ticketbooking.shared.user.UpdateUserDTO;
+import com.example.ticketbooking.shared.user.UserDTO;
 import com.example.ticketbooking.user.exception.UserNotFoundException;
-import com.example.ticketbooking.user.dto.CreateUserDTO;
-import com.example.ticketbooking.user.dto.UpdateUserDTO;
-import com.example.ticketbooking.user.dto.UserDTO;
+
 import com.example.ticketbooking.user.entity.User;
 import com.example.ticketbooking.user.mapper.UserMapper;
 
 import com.example.ticketbooking.user.repository.UserRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-
     private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -40,7 +33,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Password cannot be null or empty");
         }
         User user = userMapper.toUserEntity(createUserDTO);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         // Set validated roles on the User entity
         user.setRole(Role.USER);

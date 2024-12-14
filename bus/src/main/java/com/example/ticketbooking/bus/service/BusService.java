@@ -1,8 +1,7 @@
 package com.example.ticketbooking.bus.service;
 
-import com.example.ticketbooking.bus.dto.BusDTO;
-import com.example.ticketbooking.bus.dto.CreateBusDTO;
-import com.example.ticketbooking.bus.dto.UpdateBusDTO;
+
+import com.example.ticketbooking.shared.bus.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

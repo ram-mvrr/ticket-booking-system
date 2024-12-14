@@ -1,12 +1,10 @@
 package com.example.ticketbooking.bus.entity;
 
-import com.example.ticketbooking.bus.enums.BusType;
+import com.example.ticketbooking.shared.enums.BusType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -31,4 +29,5 @@ public class Bus {
 
     @Column(nullable = false)
     private Long routeId;
+
 }

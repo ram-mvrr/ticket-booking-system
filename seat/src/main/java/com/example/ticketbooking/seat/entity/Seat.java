@@ -1,6 +1,6 @@
 package com.example.ticketbooking.seat.entity;
 
-import com.example.ticketbooking.seat.enums.SeatType;
+import com.example.ticketbooking.shared.enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long busId;
+    private Long seatId;
 
     @Column(nullable = false, unique = true)
     private Integer seatNumber;
@@ -33,8 +33,11 @@ public class Seat {
     private BigDecimal farePerSeat;
 
     @Column(nullable = false)
-    private Long routeId;
+    private boolean isAvailable;
 
     @Column(nullable = false)
     private Long bookingId;
+
+    @Column(nullable = false, unique = true)
+    private Long busId;
 }

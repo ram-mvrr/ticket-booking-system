@@ -1,8 +1,6 @@
 package com.example.ticketbooking.route.controller;
 
-import com.example.ticketbooking.route.dto.RouteDTO;
-import com.example.ticketbooking.route.dto.CreateRouteDTO;
-import com.example.ticketbooking.route.dto.UpdateRouteDTO;
+import com.example.ticketbooking.shared.route.*;
 import com.example.ticketbooking.route.exception.RouteNotFoundException;
 import com.example.ticketbooking.route.service.RouteService;
 import org.springframework.http.HttpStatus;

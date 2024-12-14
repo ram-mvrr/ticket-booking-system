@@ -1,8 +1,7 @@
 package com.example.ticketbooking.route.service;
 
-import com.example.ticketbooking.route.dto.RouteDTO;
-import com.example.ticketbooking.route.dto.CreateRouteDTO;
-import com.example.ticketbooking.route.dto.UpdateRouteDTO;
+
+import com.example.ticketbooking.shared.route.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

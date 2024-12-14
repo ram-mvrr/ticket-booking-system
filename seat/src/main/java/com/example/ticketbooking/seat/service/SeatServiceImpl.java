@@ -1,9 +1,8 @@
 package com.example.ticketbooking.seat.service;
 
 import com.example.ticketbooking.seat.exception.SeatNotFoundException;
-import com.example.ticketbooking.seat.dto.SeatDTO;
-import com.example.ticketbooking.seat.dto.CreateSeatDTO;
-import com.example.ticketbooking.seat.dto.UpdateSeatDTO;
+
+import com.example.ticketbooking.shared.seat.*;
 import com.example.ticketbooking.seat.entity.Seat;
 import com.example.ticketbooking.seat.mapper.SeatMapper;
 import com.example.ticketbooking.seat.repository.SeatRepository;
@@ -54,8 +53,6 @@ public class SeatServiceImpl implements SeatService {
         Optional.ofNullable(updateSeatDTO.getAvailableSeats()).ifPresent(existingUser::setAvailableSeats);
         Optional.ofNullable(updateSeatDTO.getBookingId()).ifPresent(existingUser::setBookingId);
         Optional.ofNullable(updateSeatDTO.getFarePerSeat()).ifPresent(existingUser::setFarePerSeat);
-        Optional.ofNullable(updateSeatDTO.getRouteId()).ifPresent(existingUser::setRouteId);
-
         return seatMapper.toSeatDTO(existingUser);
     }
 

@@ -1,8 +1,6 @@
 package com.example.ticketbooking.booking.service;
 
-import com.example.ticketbooking.booking.dto.BookingDTO;
-import com.example.ticketbooking.booking.dto.CreateBookingDTO;
-import com.example.ticketbooking.booking.dto.UpdateBookingDTO;
+import com.example.ticketbooking.shared.booking.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

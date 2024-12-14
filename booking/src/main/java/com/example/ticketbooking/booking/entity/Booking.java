@@ -1,6 +1,7 @@
 package com.example.ticketbooking.booking.entity;
 
-import com.example.ticketbooking.booking.enums.BookingStatus;
+
+import com.example.ticketbooking.shared.enums.BookingStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

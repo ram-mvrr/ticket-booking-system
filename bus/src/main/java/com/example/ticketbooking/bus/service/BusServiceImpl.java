@@ -1,9 +1,7 @@
 package com.example.ticketbooking.bus.service;
 
 import com.example.ticketbooking.bus.exception.BusNotFoundException;
-import com.example.ticketbooking.bus.dto.BusDTO;
-import com.example.ticketbooking.bus.dto.CreateBusDTO;
-import com.example.ticketbooking.bus.dto.UpdateBusDTO;
+import com.example.ticketbooking.shared.bus.*;
 import com.example.ticketbooking.bus.entity.Bus;
 import com.example.ticketbooking.bus.mapper.BusMapper;
 import com.example.ticketbooking.bus.repository.BusRepository;
@@ -51,9 +49,7 @@ public class BusServiceImpl implements BusService {
                         .orElseThrow(() -> new BusNotFoundException("bus not found with id "+busId));
         Optional.ofNullable(updateBusDTO.getBusType()).ifPresent(existingUser::setBusType);
         Optional.ofNullable(updateBusDTO.getBusNumber()).ifPresent(existingUser::setBusNumber);
-        Optional.ofNullable(updateBusDTO.getAvailableSeats()).ifPresent(existingUser::setAvailableSeats);
         Optional.ofNullable(updateBusDTO.getTotalSeats()).ifPresent(existingUser::setTotalSeats);
-        Optional.ofNullable(updateBusDTO.getFarePerSeat()).ifPresent(existingUser::setFarePerSeat);
         Optional.ofNullable(updateBusDTO.getRouteId()).ifPresent(existingUser::setRouteId);
 
         return busMapper.toBusDTO(existingUser);

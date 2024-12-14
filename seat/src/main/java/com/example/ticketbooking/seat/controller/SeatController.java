@@ -1,8 +1,7 @@
 package com.example.ticketbooking.seat.controller;
 
-import com.example.ticketbooking.seat.dto.SeatDTO;
-import com.example.ticketbooking.seat.dto.CreateSeatDTO;
-import com.example.ticketbooking.seat.dto.UpdateSeatDTO;
+
+import com.example.ticketbooking.shared.seat.*;
 import com.example.ticketbooking.seat.exception.SeatNotFoundException;
 import com.example.ticketbooking.seat.service.SeatService;
 import org.springframework.http.HttpStatus;

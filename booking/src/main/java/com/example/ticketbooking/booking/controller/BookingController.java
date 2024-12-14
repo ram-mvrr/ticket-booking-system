@@ -1,8 +1,6 @@
 package com.example.ticketbooking.booking.controller;
 
-import com.example.ticketbooking.booking.dto.BookingDTO;
-import com.example.ticketbooking.booking.dto.CreateBookingDTO;
-import com.example.ticketbooking.booking.dto.UpdateBookingDTO;
+import com.example.ticketbooking.shared.booking.*;
 import com.example.ticketbooking.booking.exception.BookingNotFoundException;
 import com.example.ticketbooking.booking.service.BookingService;
 import org.springframework.http.HttpStatus;

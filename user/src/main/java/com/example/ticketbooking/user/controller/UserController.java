@@ -1,8 +1,6 @@
 package com.example.ticketbooking.user.controller;
 
-import com.example.ticketbooking.user.dto.CreateUserDTO;
-import com.example.ticketbooking.user.dto.UpdateUserDTO;
-import com.example.ticketbooking.user.dto.UserDTO;
+import com.example.ticketbooking.shared.user.*;
 import com.example.ticketbooking.user.service.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.LoggerFactory;
@@ -51,9 +49,9 @@ public class UserController {
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(userDTO);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserDTO updateUserDTO)  {
-        UserDTO updatedUser = userService.updateUser(id, updateUserDTO);
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDTO updateUserDTO)  {
+        UserDTO updatedUser = userService.updateUser(userId, updateUserDTO);
         return ResponseEntity.ok(updatedUser);
     }
     @DeleteMapping("/{id}")

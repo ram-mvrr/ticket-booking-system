@@ -2,15 +2,11 @@ package com.example.ticketbooking.booking.service;
 
 import com.example.ticketbooking.booking.entity.Booking;
 import com.example.ticketbooking.booking.exception.BookingNotFoundException;
-import com.example.ticketbooking.booking.dto.BookingDTO;
-import com.example.ticketbooking.booking.dto.CreateBookingDTO;
-import com.example.ticketbooking.booking.dto.UpdateBookingDTO;
+import com.example.ticketbooking.shared.booking.*;
 import com.example.ticketbooking.booking.mapper.BookingMapper;
 import com.example.ticketbooking.booking.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,22 +16,16 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final BookingMapper bookingMapper;
-    private final WebClient webClient;
 
     @Autowired
-    public BookingServiceImpl(BookingRepository bookingRepository, BookingMapper bookingMapper, WebClient webClient) {
+    public BookingServiceImpl(BookingRepository bookingRepository, BookingMapper bookingMapper) {
         this.bookingRepository = bookingRepository;
         this.bookingMapper = bookingMapper;
-        this.webClient = webClient;
     }
 
 
     @Override
-    public Mono<BookingDTO> createBooking(CreateBookingDTO createBookingDTO) {
-
-        // Fetch User and Bus details.
-        Mono<UserDTO>
-
+    public BookingDTO createBooking(CreateBookingDTO createBookingDTO) {
 
         Booking booking = bookingMapper.toBookingEntity(createBookingDTO);
 

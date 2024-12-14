@@ -1,8 +1,6 @@
 package com.example.ticketbooking.bus.controller;
 
-import com.example.ticketbooking.bus.dto.BusDTO;
-import com.example.ticketbooking.bus.dto.CreateBusDTO;
-import com.example.ticketbooking.bus.dto.UpdateBusDTO;
+import com.example.ticketbooking.shared.bus.*;
 import com.example.ticketbooking.bus.exception.BusNotFoundException;
 import com.example.ticketbooking.bus.service.BusService;
 import org.springframework.http.HttpStatus;
