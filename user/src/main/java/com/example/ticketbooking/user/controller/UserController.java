@@ -1,6 +1,5 @@
 package com.example.ticketbooking.user.controller;
 
-import com.example.ticketbooking.shared.user.*;
 import com.example.ticketbooking.user.service.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.LoggerFactory;

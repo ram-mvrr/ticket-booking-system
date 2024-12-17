@@ -2,7 +2,6 @@ package com.example.ticketbooking.seat.service;
 
 import com.example.ticketbooking.seat.exception.SeatNotFoundException;
 
-import com.example.ticketbooking.shared.seat.*;
 import com.example.ticketbooking.seat.entity.Seat;
 import com.example.ticketbooking.seat.mapper.SeatMapper;
 import com.example.ticketbooking.seat.repository.SeatRepository;

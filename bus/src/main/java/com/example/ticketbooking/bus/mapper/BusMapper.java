@@ -2,7 +2,6 @@ package com.example.ticketbooking.bus.mapper;
 
 
 import com.example.ticketbooking.bus.entity.Bus;
-import com.example.ticketbooking.shared.bus.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

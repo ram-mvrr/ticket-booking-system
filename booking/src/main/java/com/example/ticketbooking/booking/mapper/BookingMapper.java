@@ -2,7 +2,9 @@ package com.example.ticketbooking.booking.mapper;
 
 
 import com.example.ticketbooking.booking.entity.Booking;
-import com.example.ticketbooking.shared.booking.*;
+import com.trucare.ticketbooking.shared.booking.BookingDTO;
+import com.trucare.ticketbooking.shared.booking.CreateBookingDTO;
+import com.trucare.ticketbooking.shared.booking.UpdateBookingDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,4 +1,4 @@
-package com.example.ticketbooking.booking.config;
+package com.example.ticketbooking.shared.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean
-    public WebClient.Builder webClient(){
-        return WebClient.builder();
+    public WebClient webClient(){
+        return WebClient.builder().baseUrl("http://localhost/").build();
     }
 }

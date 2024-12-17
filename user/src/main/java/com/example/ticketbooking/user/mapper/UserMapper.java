@@ -2,7 +2,6 @@ package com.example.ticketbooking.user.mapper;
 
 
 
-import com.example.ticketbooking.shared.user.*;
 import com.example.ticketbooking.user.entity.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,6 +1,5 @@
 package com.example.ticketbooking.bus.controller;
 
-import com.example.ticketbooking.shared.bus.*;
 import com.example.ticketbooking.bus.exception.BusNotFoundException;
 import com.example.ticketbooking.bus.service.BusService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/bus")
+@RequestMapping("/api/buses")
 public class BusController {
 
 

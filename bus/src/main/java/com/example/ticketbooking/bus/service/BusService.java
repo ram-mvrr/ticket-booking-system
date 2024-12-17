@@ -1,8 +1,8 @@
 package com.example.ticketbooking.bus.service;
 
 
-import com.example.ticketbooking.shared.bus.*;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface BusService {
 
-    BusDTO createBus(CreateBusDTO createBusDTO);
+    Mono<BusDTO> createBus(CreateBusDTO createBusDTO);
 
     Optional<BusDTO> getBus(Long busId);
 

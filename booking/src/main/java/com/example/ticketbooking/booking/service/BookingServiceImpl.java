@@ -2,9 +2,11 @@ package com.example.ticketbooking.booking.service;
 
 import com.example.ticketbooking.booking.entity.Booking;
 import com.example.ticketbooking.booking.exception.BookingNotFoundException;
-import com.example.ticketbooking.shared.booking.*;
 import com.example.ticketbooking.booking.mapper.BookingMapper;
 import com.example.ticketbooking.booking.repository.BookingRepository;
+import com.trucare.ticketbooking.shared.booking.BookingDTO;
+import com.trucare.ticketbooking.shared.booking.CreateBookingDTO;
+import com.trucare.ticketbooking.shared.booking.UpdateBookingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

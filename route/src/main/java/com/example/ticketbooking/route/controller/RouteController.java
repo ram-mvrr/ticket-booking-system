@@ -1,6 +1,5 @@
 package com.example.ticketbooking.route.controller;
 
-import com.example.ticketbooking.shared.route.*;
 import com.example.ticketbooking.route.exception.RouteNotFoundException;
 import com.example.ticketbooking.route.service.RouteService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/route")
+@RequestMapping("/api/routes")
 public class RouteController {
 
 

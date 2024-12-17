@@ -1,8 +1,10 @@
 package com.example.ticketbooking.booking.controller;
 
-import com.example.ticketbooking.shared.booking.*;
 import com.example.ticketbooking.booking.exception.BookingNotFoundException;
 import com.example.ticketbooking.booking.service.BookingService;
+import com.trucare.ticketbooking.shared.booking.BookingDTO;
+import com.trucare.ticketbooking.shared.booking.CreateBookingDTO;
+import com.trucare.ticketbooking.shared.booking.UpdateBookingDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/booking")
+@RequestMapping("/api/bookings")
 public class BookingController {
 
 

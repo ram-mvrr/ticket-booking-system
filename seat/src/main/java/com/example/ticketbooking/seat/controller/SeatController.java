@@ -1,7 +1,6 @@
 package com.example.ticketbooking.seat.controller;
 
 
-import com.example.ticketbooking.shared.seat.*;
 import com.example.ticketbooking.seat.exception.SeatNotFoundException;
 import com.example.ticketbooking.seat.service.SeatService;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/seat")
+@RequestMapping("/api/seats")
 public class SeatController {
 
 
